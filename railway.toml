@@ -1,0 +1,2 @@
+[deploy]
+cronSchedule = "0 0 * * *"

@@ -1,0 +1,24 @@
+{
+  "name": "railway-restart",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "pnpm start"
+  },
+  "type": "module",
+  "author": {
+    "name": "Kane",
+    "email": "kane@yeecord.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.5.7",
+    "prettier": "^3.0.3",
+    "tsx": "^3.12.8",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "graphql": "^16.8.0",
+    "graphql-request": "^6.1.0",
+    "zod": "^3.22.2"
+  }
+}
