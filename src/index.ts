@@ -38,7 +38,15 @@ if (env.PLUGINS) {
       environmentName,
     );
 
-    const plugin = getResourceByName(project.plugins, pluginName);
+    const plugin = project.plugins.edges.find(
+      (plugin) => plugin.node.friendlyName === pluginName,
+    )?.node;
+
+    if (!plugin) {
+      throw new Error(
+        `Plugin ${pluginName} not found in ${project.name}:${environment.name}`,
+      );
+    }
 
     await restartPlugin(plugin, environment);
 

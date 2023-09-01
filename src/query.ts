@@ -18,6 +18,7 @@ export const getProjectsQuery = /* GraphQL */ `
               node {
                 name
                 id
+                friendlyName
               }
             }
           }

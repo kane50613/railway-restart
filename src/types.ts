@@ -22,8 +22,12 @@ export interface Deployment {
   status: string;
 }
 
+export interface Plugin extends Resource {
+  friendlyName: string;
+}
+
 interface Project extends Resource {
   services: ResourceArray<Resource>;
-  plugins: ResourceArray<Resource>;
+  plugins: ResourceArray<Plugin>;
   environments: ResourceArray<Resource>;
 }
