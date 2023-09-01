@@ -1,2 +1,3 @@
 [deploy]
 cronSchedule = "0 0 * * *"
+restartPolicyType = "never"
