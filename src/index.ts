@@ -51,7 +51,7 @@ if (env.PLUGINS) {
     await restartPlugin(plugin, environment);
 
     console.log(
-      `Plugin ${project.id}:${plugin.id}:${environmentName} has been restarted`,
+      `Plugin ${project.name}:${plugin.name}:${environmentName} has been restarted`,
     );
   }
 }
