@@ -24,7 +24,7 @@ const client = new GraphQLClient(RAILWAY_ENDPOINT, {
   },
 });
 
-export const projects = await getProjects();
+export const { projects } = await getProjects();
 
 async function getProjects() {
   return client.request<GetProjects>(getProjectsQuery);
@@ -41,7 +41,7 @@ export async function getSuccessDeployment(
       serviceId: service.id,
       environmentId: environment.id,
     })
-    .then((r) => r.edges.at(0)?.node);
+    .then(({ deployments }) => deployments.edges.at(0)?.node);
 
   if (deployment?.status !== "SUCCESS")
     throw new Error(

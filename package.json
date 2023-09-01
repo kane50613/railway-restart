@@ -2,7 +2,7 @@
   "name": "railway-restart",
   "version": "1.0.0",
   "scripts": {
-    "start": "pnpm start"
+    "start": "tsx src/index.ts"
   },
   "type": "module",
   "author": {

@@ -4,9 +4,13 @@ export type ResourceArray<T> = {
   }[];
 };
 
-export type GetProjects = ResourceArray<Project>;
+export type GetProjects = {
+  projects: ResourceArray<Project>;
+};
 
-export type GetSuccessDeployment = ResourceArray<Deployment>;
+export type GetSuccessDeployment = {
+  deployments: ResourceArray<Deployment>;
+};
 
 export interface Resource {
   id: string;

@@ -57,7 +57,7 @@ export const getSuccessDeploymentQuery = /* GraphQL */ `
 `;
 
 export const restartPluginQuery = /* GraphQL */ `
-  mutation ($id: String!, $environmentId: String!) {
+  mutation pluginRestart($id: String!, $environmentId: String!) {
     pluginRestart(id: $id, input: { environmentId: $environmentId }) {
       id
     }
@@ -65,7 +65,7 @@ export const restartPluginQuery = /* GraphQL */ `
 `;
 
 export const restartDeploymentQuery = /* GraphQL */ `
-  mutation ($id: String!) {
+  mutation deploymentRestart($id: String!) {
     deploymentRestart(id: $id) {
       id
     }
