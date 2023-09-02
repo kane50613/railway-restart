@@ -22,7 +22,18 @@ if (env.SERVICES) {
       environment,
     );
 
-    await restartDeployment(deployment);
+    try {
+      await restartDeployment(deployment);
+    } catch (e) {
+      if (!(e instanceof Error)) throw e;
+
+      console.error(
+        `Error restarting deployment ${deployment.id} in ${environment.name}: ${e.message}`,
+      );
+      console.error(`Please restart manually`);
+
+      continue;
+    }
 
     console.log(
       `Deployment ${deployment.id} (${project.id}:${service.id}:${environment.id}) has been restarted`,
@@ -48,7 +59,18 @@ if (env.PLUGINS) {
       );
     }
 
-    await restartPlugin(plugin, environment);
+    try {
+      await restartPlugin(plugin, environment);
+    } catch (e) {
+      if (!(e instanceof Error)) throw e;
+
+      console.error(
+        `Error restarting plugin ${plugin.name} in ${environment.name}: ${e.message}`,
+      );
+      console.error(`Please restart manually`);
+
+      continue;
+    }
 
     console.log(
       `Plugin ${project.name}:${plugin.name}:${environmentName} has been restarted`,
