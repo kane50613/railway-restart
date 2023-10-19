@@ -67,8 +67,6 @@ export const restartPluginQuery = /* GraphQL */ `
 
 export const restartDeploymentQuery = /* GraphQL */ `
   mutation deploymentRestart($id: String!) {
-    deploymentRestart(id: $id) {
-      id
-    }
+    deploymentRestart(id: $id)
   }
 `;
