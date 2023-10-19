@@ -26,6 +26,8 @@ const client = new GraphQLClient(RAILWAY_ENDPOINT, {
 
 export const { projects } = await getProjects();
 
+console.log(`Resolved all projects: ${JSON.stringify(projects)}`);
+
 async function getProjects() {
   return client.request<GetProjects>(getProjectsQuery);
 }
@@ -33,7 +35,7 @@ async function getProjects() {
 export async function getSuccessDeployment(
   project: Resource,
   service: Resource,
-  environment: Resource,
+  environment: Resource
 ) {
   const deployment = await client
     .request<GetSuccessDeployment>(getSuccessDeploymentQuery, {
@@ -45,7 +47,7 @@ export async function getSuccessDeployment(
 
   if (deployment?.status !== "SUCCESS")
     throw new Error(
-      `Failed to get a success deployment for ${project.name}:${service.name}:${environment.name}`,
+      `Failed to get a success deployment for ${project.name}:${service.name}:${environment.name}`
     );
 
   return deployment;
@@ -66,13 +68,11 @@ export function restartPlugin(plugin: Resource, environment: Resource) {
 
 export function getResourceByName<T extends Resource>(
   resources: ResourceArray<T>,
-  name: string,
+  name: string
 ) {
   const record = resources.edges.find(({ node }) => node.name === name);
 
-  if (!record) {
-    throw new Error(`Record ${name} not found`);
-  }
+  if (!record) throw new Error(`Record ${name} not found`);
 
   return record.node;
 }
