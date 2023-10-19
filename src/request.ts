@@ -26,7 +26,7 @@ const client = new GraphQLClient(RAILWAY_ENDPOINT, {
 
 export const { projects } = await getProjects();
 
-console.log(`Resolved all projects: ${JSON.stringify(projects)}`);
+// console.log(`Resolved all projects: ${JSON.stringify(projects)}`);
 
 async function getProjects() {
   return client.request<GetProjects>(getProjectsQuery);
@@ -70,7 +70,7 @@ export function getResourceByName<T extends Resource>(
   resources: ResourceArray<T>,
   name: string
 ) {
-  console.log(`Resolving resource ${name} from ${JSON.stringify(resources)}`);
+  // console.log(`Resolving resource ${name} from ${JSON.stringify(resources)}`);
 
   const record = resources.edges.find(({ node }) => node.name === name);
 
