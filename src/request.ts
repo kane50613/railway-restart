@@ -70,6 +70,8 @@ export function getResourceByName<T extends Resource>(
   resources: ResourceArray<T>,
   name: string
 ) {
+  console.log(`Resolving resource ${name} from ${JSON.stringify(resources)}`);
+
   const record = resources.edges.find(({ node }) => node.name === name);
 
   if (!record) throw new Error(`Record ${name} not found`);
