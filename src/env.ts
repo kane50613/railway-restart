@@ -1,16 +1,17 @@
-import { z } from "zod";
+import { object, optional, parseAsync, string, transform } from "valibot";
 import { transformPlugin, transformService } from "./util.js";
 
-export const env = z
-  .object({
-    PLUGINS: z
-      .string()
-      .transform((str) => str.split(",").map(transformPlugin))
-      .nullish(),
-    SERVICES: z
-      .string()
-      .transform((str) => str.split(",").map(transformService))
-      .nullish(),
-    RAILWAY_API_KEY: z.string(),
-  })
-  .parse(process.env);
+export const env = await parseAsync(
+  object({
+    PLUGINS: transform(
+      optional(string()),
+      (str) => str?.split(",").map(transformPlugin),
+    ),
+    SERVICES: transform(
+      optional(string()),
+      (str) => str?.split(",").map(transformService),
+    ),
+    RAILWAY_API_KEY: string(),
+  }),
+  process.env,
+);

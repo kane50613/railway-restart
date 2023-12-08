@@ -35,7 +35,7 @@ async function getProjects() {
 export async function getSuccessDeployment(
   project: Resource,
   service: Resource,
-  environment: Resource
+  environment: Resource,
 ) {
   const deployment = await client
     .request<GetSuccessDeployment>(getSuccessDeploymentQuery, {
@@ -47,7 +47,7 @@ export async function getSuccessDeployment(
 
   if (deployment?.status !== "SUCCESS")
     throw new Error(
-      `Failed to get a success deployment for ${project.name}:${service.name}:${environment.name}`
+      `Failed to get a success deployment for ${project.name}:${service.name}:${environment.name}`,
     );
 
   return deployment;
@@ -68,7 +68,7 @@ export function restartPlugin(plugin: Resource, environment: Resource) {
 
 export function getResourceByName<T extends Resource>(
   resources: ResourceArray<T>,
-  name: string
+  name: string,
 ) {
   // console.log(`Resolving resource ${name} from ${JSON.stringify(resources)}`);
 
